@@ -17,7 +17,9 @@
 */
 int main()
 {
+    int x;
     std::cout << "Hello directly from main..." << std::endl;
     say_hello();
+    std::cin >> x;
     std::cout << "2 + 3 is " << add(2, 3) << std::endl;
 }

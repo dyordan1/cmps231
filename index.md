@@ -2,7 +2,7 @@
 
 ## Data Structures and Algorithms
 **Meeting Time**:  Thursday, 6:05pm - 9:45pm
-**Location**:  G 301
+**Location**:  ASB 429
 **Instructor**:   Scott Frees, Professor of Computer Sciennce
 
 ### Contact Information
@@ -33,17 +33,23 @@ The following guides will be useful to you throughout the course, but especially
 ### Programming Environment
 Our code environment is designed to be as similar as possible on all three major operating systems - Windows, MacOS, and Linux.  It is also designed to get you more accustomed to very popular software development tools used in industry.  No matter which OS you are using, I'm going to have you working from the command line (terminal) a fair amount, and using simple file-based tools rather than large integrated devleopment environments (IDEs) like Visual Studio, XCode, and Eclipse.
 - [Windows](guides/dev-setup-windows.html)
+- [Notes on Ramapo Lab Machines](guides/dev-setup-lab.html)
 - [MacOS](guides/dev-setup-mac-os.html)
 - [Linux](guides/dev-setup-linux.html)
 
 ### Debugging
-TBD
+Debugging is the process of finding out why your program isn't working... and you'll need to get very good at this if you want to be a software developer! 
+
+See the following guide for setting up `gdb` (debugger) and Visual Studio Code on Windows, Mac OS, and Linux.
+
+- [Debugging Guide](guides/debugging.html)
+
 ## Schedule
 
 | Week | Topic | Reading | Assignments
 |------|-------|---------|------------
-| 9/5 |  **Module 00**:  [Course Policies](slides/policies.html)<br/>**Module 01**: [Setting up your Development Environment](slides/dev-setup.html)<br/>**Module 02**:  [Review of Selection, Loops, and Functions](slides/functions.html)<br/>**Module 03**:  [Basics of Unit Testing](slides/unit-testing.html) | Ch. 1 | **Lab Assignment**:  [Sort in Place](slides/unit-testing.html#25)
-| 9/12 |  **Module 04**:  [Review of Arrays](slides/arrays.html)<br/>**Module 05**:  [Review of Classes and Objects](slides/classes.html) |Ch. 2 | **Lab Assignment**:  [Class wrapper around an array](slides/classes.html#20)
+| 9/5 |  **Module 00**:  [Course Policies](slides/policies.html)<br/>**Module 01**: [Setting up your Development Environment](slides/dev-setup.html)<br/>**Module 02**:  [Review of Selection, Loops, and Functions](slides/functions.html)| Ch. 1 | 
+| 9/12 |  **Module 03**:  [Basics of Unit Testing](slides/unit-testing.html)  <br/>**Module 04**: [Review of Arrays](slides/arrays.html)<br/>**Module 05**:  [Review of Classes and Objects](slides/classes.html) |Ch. 2 | **Lab Assignment**:  [Sort in Place](slides/unit-testing.html#25)<br/>**Lab Assignment**:  [Class wrapper around an array](slides/classes.html#20)
 | 9/19 | **Module 06**:  [Lists, Stacks, and Queues with Arrays](slides/lists-queues-stacks.html) | Ch. 3-6 | **Lab Assignment**  [Combined Stack/Query](slides/lists-queues-stacks.html#21)
 | 9/26 | **Module 07**:  [Review of Templates](slides/templates.html)<br/>**Module 08**:  [STL:  Vectors, Queue, Stack, Deque](slides/stl-sequences.html) |Ch. 3-6 | [Homework 1](https://github.com/scottfrees/cmps231/tree/master/code/hw-01)
 | 10/3 | **Module 09**:  [Review of Pointers](slides/pointers.html)<br/>**Module 10**:  [Linked Lists](slides/linked-list.html) |Ch. 3-6 | [Homework 2](https://github.com/scottfrees/cmps231/tree/master/code/hw-02) 

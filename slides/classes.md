@@ -221,12 +221,11 @@ Rational operator-(const Rational &r1, const Rational &r2)
 Now we have the tools to create a `Histogram` class.
 - It's constructor will initialize internal data
 - It will contain a `sample` method to take in input
-- It can have a `query` method to report frequency of a particular value
-- It can have a `mean` method to report average frequency
-- Other methods might be `max`, `min`, and `report`
+- It can have a `count` method to report frequency of a particular value
 
-.callout[Typically, we don't want our classes to print things directly - it leads to inflexible code, and untestable code - so we'll skip the `report` method for now]
-
+.callout[
+We'll mostly borrow code from earlier, but now we have a nicer abstraction.
+]
 
 ---
 # Lab 2

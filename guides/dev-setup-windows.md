@@ -81,6 +81,7 @@ The MOST important part of the setup is choosing the packages (programs) you nee
 2. g++
 3. make
 4. cmake
+5. gdb (optional, for debugging)
 
 #### Package 1:  Select git
 Enter "git" in the search box towards the top left.  Expand the package list tree, so you can see the "Devel" tree, and change the entry for **git** to 2.17 instead of "Skip".  **DO NOT CLICK NEXT YET**.
@@ -97,6 +98,8 @@ Next, type `g++` into the search box.  Change the **gcc-g++** line from "Skip" t
 Now, type `make` in the search box.  Change the **make** line to version 4.2 or above, and the **cmake** line to version 3.6 or above (the search term "make" finds both the `make` and `cmake` terms).
 
 <img src='cygwin/cygwin-09.png'/>
+
+*If you want to use a debugger, please also install `gdb`, the same way as for the above programs, before moving on.*
 
 Now **Click next**, you should see a confirmation screen - where **many** packages will be listed - they are dependencies of what we selected ourselves.  
 
