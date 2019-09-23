@@ -1,16 +1,10 @@
-class ArrayList
+class SortedList
 {
 public:
     // Initialize the contents of your list to 0, and initialize any other member variables you need.
-    ArrayList();
+    SortedList();
 
-    // Add the value to the beginning of the list. Throw length_error if beyond capacity
-    void prepend(int value);
-
-    // Add the value to the end of the list. Throw length_error if beyond capacity
-    void append(int value);
-    
-    void insertAt(int value, int index);
+    void insert(int value);
     
     void remove(int index);
 
@@ -31,4 +25,7 @@ private:
     // add any private members you think are necessary.
     int data[CAPACITY];
     int count;
+    
+    void insertAt(int value, int index);
+    
 };

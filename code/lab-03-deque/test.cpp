@@ -20,7 +20,7 @@ TEST_CASE("Push back adds correctly, and protects against overflow")
         d.push_back(i);
     }
     REQUIRE(d.is_empty() == false);
-    REQUIRE(d.is_full() == false);
+    REQUIRE(d.is_full() == true);
     CHECK_THROWS_AS(d.push_back(42), length_error);
 
     int v = d.pop_front();

@@ -1,20 +1,28 @@
-#include "array-list.h"
+#include "sorted-list.h"
 #include <stdexcept>
 
-ArrayList::ArrayList()
+SortedList::SortedList()
 {
     // Initialize the contents of your list.
     count = 0;
 }
-void ArrayList::prepend(int value)
-{
-    insertAt(value, 0);
-}
 
-void ArrayList::insertAt(int value, int index){
+void SortedList::insert(int value) {
     if (count >= CAPACITY) {
         throw std::length_error("Out of room");
     }
+    for (int i = 0; i < count; i++ ) {
+        if ( data[i] > value) {
+            insertAt(value, i);
+            return;
+        }
+    }
+    insertAt(value, count);
+}
+
+// private
+void SortedList::insertAt(int value, int index){
+   
     for ( int i = count; i > index; i-- ) {
         data[i] = data[i-1];
     }
@@ -22,16 +30,8 @@ void ArrayList::insertAt(int value, int index){
     count++;
     
 }
-void ArrayList::append(int value)
-{
-    if (count >= CAPACITY) {
-        throw std::length_error("Out of room");
-    }
-    data[count] = value;
-    count++;
-}
 
-void ArrayList::remove(int index) {
+void SortedList::remove(int index) {
     if ( index < 0 || index >= count) {
         throw std::out_of_range("Index out of bounds");
     }
@@ -41,24 +41,26 @@ void ArrayList::remove(int index) {
     count--;
     
 }
-int ArrayList::get(int index) const
+int SortedList::get(int index) const
 {
     if ( index < 0 || index >= count) {
         throw std::out_of_range("Index out of bounds");
     }
     return data[index];
 }
-int ArrayList::find(int value) const
+int SortedList::find(int value) const
 {
     for ( int i = 0; i < count; i++ ) {
         if ( data[i] == value) {
             return i;
+        } else if ( data[i] > value) {
+            return -1;
         }
     }
     return -1;
 }
 
-int ArrayList::length() const
+int SortedList::length() const
 {
     return count;
 }
