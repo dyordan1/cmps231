@@ -18,7 +18,7 @@ There is no single answer - your use case will drive your choice, and it will va
 # Non-contiguous?
 With an array, if we know the address of the first element, we know the address of all the rest.
 
-PICTURE OF ARRAY WITH ADDRESSES
+<img src='../images/array-addresses.png'/>
 
 This is because all the elements are right next to eachother.  If we drop this requirement, then we
 would need another way of knowing where *each* element is...
@@ -27,7 +27,7 @@ would need another way of knowing where *each* element is...
 # Pointers to the rescue
 What if we did this?
 
-PICTURE OF ARRAY WITH POINTERS
+<img src='../images/list-of-pointers.png'/>
 
 .callout[
 Well, this sort of solves it, but now we have an array of pointers :(
@@ -56,14 +56,14 @@ class node {
 # A chain of `node`s
 Now every `node` point's to the next node... so we are in good shape - *if we just knew where the first one was*.
 
-PICTURE WITHOUT HEAD (tail unspecified)
+<img src='../images/nodes.png'/>
 
 
 ---
 # A chain of `node`s
 Now every Node point's to the next node... so we are in good shape - *if we just knew where the first one was*.
 
-PICTURE HEAD (tail unspecified)
+<img src='../images/nodes-head.png'/>
 
 .callout[
 We can remember where the *first* `Node` is by holding a **pointer** to it.  
@@ -73,7 +73,7 @@ We can remember where the *first* `Node` is by holding a **pointer** to it.
 # A chain of `node`s
 One more problem... what should the value of `next` be in that last `node`?
 
-PICTURE With HEAD and tail as nullptr
+<img src='../images/nodes-head.png'/>
 
 .callout[
 We can remember where the *first* `Node` is by holding a **pointer** to it.  
@@ -157,7 +157,6 @@ An iterator encapsulates a `node`.
  - We can decrement the iterator to the previous location
  - We can access (read or write) the data at the given location.
 
-CODE FOR ITERATOR
 
 ---
 # List implementation (3)
