@@ -61,6 +61,17 @@ TEST_CASE("Indexing allows setting the value")
     REQUIRE(al[1] == Rational(14, 17));
 }
 
+TEST_CASE("Indexing permitted with array syntax")
+{
+    ArrayList<Rational> al;
+    al.prepend(Rational(5, 8));
+    al.prepend(Rational(2, 1));
+    al[1] = Rational(14, 17);
+
+    REQUIRE(al[1] == Rational(14, 17));
+    REQUIRE(al[0] == Rational(2, 1));
+}
+
 TEST_CASE("Get throws exception if index is less than 0")
 {
     ArrayList<int> al;

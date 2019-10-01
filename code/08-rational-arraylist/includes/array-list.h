@@ -55,6 +55,18 @@ public:
         return data[index];
     }
 
+    T & operator[] (const int index) {
+        if (index < 0)
+        {
+            throw std::out_of_range("Index must be 0 or greater.");
+        }
+        else if (index >= count)
+        {
+            throw std::out_of_range("Index is larger than maxium index with valid data");
+        }
+        return data[index];
+    }
+
     // Return index where given value is found.  Return -1 if the value is not found.
     int find(T value) const
     {
