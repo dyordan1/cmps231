@@ -60,6 +60,7 @@ int ss (int x, int y, int z) {
     int sqs[3] = {x*x, y*y, z*z}
     int tmp = sum(sqs[0], sqs[1]);
     int result = sum(tmp, sqs[2]);
+    return result;
 }
 
 int main() {
@@ -86,6 +87,7 @@ int ss (int x, int y, int z) {
     int sqs[3] = {x*x, y*y, z*z}
     int tmp = sum(sqs[0], sqs[1]);
     int result = sum(tmp, sqs[2]);
+    return result;
 }
 
 int main() {
@@ -120,6 +122,7 @@ int ss (int x, int y, int z) {
     // Let's add a typo... where is
     // the 200th element of sqs?
     int result = sum(tmp, sqs[20]);
+    return result;
 }
 ```
 --
