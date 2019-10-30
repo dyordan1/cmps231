@@ -55,8 +55,8 @@ See the following guide for setting up `gdb` (debugger) and Visual Studio Code o
 | 10/3 | **Module 09**:  [Review of Pointers](slides/pointers.html)<br/>**Module 10**:  [Linked Lists](slides/linked-list.html) |Ch. 3-6 | [Homework 2](https://github.com/scottfrees/cmps231/tree/master/code/hw-02) 
 | 10/10 | **Module 11**:  [STL List and searching](slides/stl-list.html)<br/>**Module 12**:  [Big O Notation and Algorithm Analysis](slides/complexity.html) |Ch. 3-6 | **Homework 1 Due**
 | 10/17 | **Exam 1**:  Covers all material up to *and including* linked lists.  Big O notation will not be covered.  Exam will be three hours, and including coding.  It will be open notes, open book, and open internet (subject to academic integrity expectations). | | **Homework 2 Due** 
-| 10/24 | **Module 12**:  [Big O Notation and Algorithm Analysis](slides/complexity.html)<br/>**Module 13**:  [Recursion - binary search on arrays](slides/recursion.html)<br/>**Module 14**:  [Binary Search Trees](slides/btrees.html) | Ch. 7-8 | Homework:  (TBD)
-|10/31 | **Module 15**:  [Priority Queues, Heaps, STL priority_queue](slides/heaps.html) |Ch. 9.1-9.2 | **Lab Assignment** (TBD)
+| 10/24 | **Module 12**:  [Big O Notation and Algorithm Analysis](slides/complexity.html)<br/>**Module 13**:  [Recursion - binary search on arrays](slides/recursion.html)<br/>
+|10/31 | **Module 14**:  [Binary Search Trees](slides/btrees.html)<br/>**Module 15**:  [Priority Queues, Heaps, STL priority_queue](slides/heaps.html) |Ch. 7-8<br/>Ch. 9.1-9.2 | Homework:  (TBD)
 |11/7 | **Module 16**:  [Hashing and Hashtables](slides/hash.html) | Ch. 10.3| **Lab Assignment** (TBD)
 |11/14 | **Module 17**:  [Graphs and Search](slides/graphs.html) | Ch. 9.3|
 | 11/21 | **Exam 2**:  Covers all material up to *and including Hashing and STL Maps*.  There will be an emphasis on material covered since the first exam.  Exam will be three hours, and including coding.  It will be open notes, open book, and open internet (subject to academic integrity expecations). | | 
