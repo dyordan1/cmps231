@@ -139,11 +139,11 @@ Notice that we are essentially creating a horizontal "bucket".
 - How do we deal with deleting?
 
 ---
-# Implementation
-Let's implement a Hash table using the bucket/chaining strategy.
-- We'll create a table size that is **prime**, which helps distribute things nicely.
-- We'll assume the **values** support the `==` and `%` operator - and that the result of the `%` operator is always a whole, unsigned number.
-- Let's write some simple tests first.
+# Lab 5
+Implement a Hash table using the bucket/chaining strategy, which stores **integers**.
+- Create a "table size" that is **prime**, which helps distribute things nicely.  Use a `vector` of `vector`s... so each slot in the table is a `vector<int>` itself.
+- Your hashing function should be to perform a modulus operation on the value, modding by the table size.
+- Write some simple tests first!!!
 
 ---
 # Conclusion
