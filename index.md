@@ -57,8 +57,8 @@ See the following guide for setting up `gdb` (debugger) and Visual Studio Code o
 | 10/17 | **Exam 1**:  Covers all material up to *and including* linked lists.  Big O notation will not be covered.  Exam will be three hours, and including coding.  It will be open notes, open book, and open internet (subject to academic integrity expectations). | | **Homework 2 Due** 
 | 10/24 | **Module 12**:  [Big O Notation and Algorithm Analysis](slides/complexity.html)<br/>**Module 13**:  [Recursion - binary search on arrays](slides/recursion.html)<br/>
 |10/31 | **Module 14**:  [Binary Search Trees](slides/btrees.html)<br/>**Module 15**:  [Priority Queues, Heaps, STL priority_queue](slides/heaps.html) |Ch. 7-8<br/>Ch. 9.1-9.2 | [Homework 3](https://github.com/scottfrees/cmps231/tree/master/code/hw-03.md) 
-|11/7 | **Module 16**:  [Hashing and Hashtables](slides/hash.html) | Ch. 10.3| 
-|11/14 | **Module 17**:  [Graphs and Search](slides/graphs.html) | Ch. 9.3| **Homework 3 Due** <br> **Lab Assignment** (slides)
+|11/7 | **Module 16**:  [Hashing and Hashtables](slides/hash.html) | Ch. 10.3| **Lab Assignment** (slides)
+|11/14 | **Module 17**:  [Graphs and Search](slides/graphs.html) | Ch. 9.3| **Homework 3 Due**
 | 11/21 | **Exam 2**:  Covers all material up to *and including Hashing and STL Maps*.  There will be an emphasis on material covered since the first exam.  Exam will be three hours, and including coding.  It will be open notes, open book, and open internet (subject to academic integrity expecations). | | 
 | 11/28 | *No class held - Thanksgiving break* | | 
 | 12/5 | **Module 18**:  [Sorting - the simple algorithms](slides/sorting-simple.html)<br/>**Module 19**:  [Sorting - radix sort](slides/radix-sort.html)<br/>**Module 20**:  [Sorting - heap sort](slides/heap-sort.html) | Ch. 10.1 and 10.4 | **Lab Assignment** (TBD)

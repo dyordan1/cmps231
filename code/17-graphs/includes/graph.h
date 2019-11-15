@@ -23,36 +23,38 @@ public:
         return total_weight;
     }
 
+    bool operator==(const Path &p2)
+    {
+        return this->weight() == p2.weight();
+    }
+    bool operator!=(const Path &p2)
+    {
+        return this->weight() != p2.weight();
+    }
+    // comparisons are reversed - shorter path is higher priority
+    bool operator<(const Path &p2)
+    {
+        return this->weight() > p2.weight();
+    }
+    bool operator>(const Path &p2)
+    {
+        return this->weight() < p2.weight();
+    }
+    bool operator<=(const Path &p2)
+    {
+        return this->weight() >= p2.weight();
+    }
+    bool operator>=(const Path &p2)
+    {
+        return this->weight() <= p2.weight();
+    }
+
 private:
     std::vector<V> vertices;
     int total_weight;
 };
 
-bool operator==(const Path &p1, const Path &p2)
-{
-    return p1.weight() == p2.weight();
-}
-bool operator!=(const Path &p1, const Path &p2)
-{
-    return p1.weight() != p2.weight();
-}
-// comparisons are reversed - shorter path is higher priority
-bool operator<(const Path &p1, const Path &p2)
-{
-    return p1.weight() > p2.weight();
-}
-bool operator>(const Path &p1, const Path &p2)
-{
-    return p1.weight() < p2.weight();
-}
-bool operator<=(const Path &p1, const Path &p2)
-{
-    return p1.weight() >= p2.weight();
-}
-bool operator>=(const Path &p1, const Path &p2)
-{
-    return p1.weight() <= p2.weight();
-}
+
 
 template <typename V>
 class Graph
@@ -88,7 +90,6 @@ public:
         {
             throw std::invalid_argument("Edge cannot be added, start or end vertices do not exist");
         }
-        std::cout << _s << " " << _e << std::endl;
         adj[_s][_e] = weight;
     }
 
@@ -127,9 +128,9 @@ public:
         return a;
     }
 
-    Path<T> shortest_path(const V &start, const V &end)
+    Path<V> shortest_path(const V &start, const V &end)
     {
-        std::priority_queue<Path<V>> containter;
+        std::priority_queue<Path<V>> container;
         auto insert = [&](const Path<V> &path) {
             container.push(path);
         };
