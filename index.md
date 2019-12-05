@@ -61,7 +61,7 @@ See the following guide for setting up `gdb` (debugger) and Visual Studio Code o
 |11/14 | **Module 17**:  [Graphs and Search](slides/graphs.html) | Ch. 9.3| **Homework 3 Due**
 | 11/21 | **Exam 2**:  Covers all material up to *and including Hashing and STL Maps*.  There will be an emphasis on material covered since the first exam.  Exam will be three hours.  It will be closed notes, closed book, and closed internet.  You are permitted to bring one sheet of double sided typed/handwritten notes. | | 
 | 11/28 | *No class held - Thanksgiving break* | | 
-| 12/5 | **Module 18**:  [Sorting - the simple algorithms](slides/sorting-simple.html)<br/>**Module 19**:  [Sorting - radix sort](slides/radix-sort.html)<br/>**Module 20**:  [Sorting - heap sort](slides/heap-sort.html) | Ch. 10.1 and 10.4 | **Lab Assignment** (TBD)
+| 12/5 | **Module 18**:  [Sorting - the simple algorithms](slides/sorting-simple.html)<br/>**Module 19**:  [Sorting - radix sort](slides/radix-sort.html)<br/>**Module 20**:  [Sorting - heap sort](slides/heap-sort.html) | Ch. 10.1 and 10.4 | **Lab Assignment** (Radix Sort)
 | 12/12 | **Module 21**:  [Sorting - merge sort](slides/merge-sort.html)<br/>**Module 22**:  [Sorting - quick sort](slides/quicksort.html) | Ch. 10.1 and 10.4| 
 
 ## Lab Assignments
