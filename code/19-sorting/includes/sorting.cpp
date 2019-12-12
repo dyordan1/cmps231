@@ -2,6 +2,8 @@
 #include <queue> // Good for the radix sort...
 #include <cmath> // Used in radix finding...
 using namespace std;
+const int MAX = 10000;
+
 
 void swap (int values[], int i, int j) {
     int tmp = values[i];
@@ -135,4 +137,121 @@ void heap_sort(int heap_sort[], int n) {
         swap(heap_sort, 0, i);
         reheap(heap_sort, 0, i-1);
     }
+}
+
+
+void merge(int a[], int start1, int end1, int start2, int end2) {
+    int tmp[MAX];  // will temporarily hold the merged array
+    int i = 0;  // index used to fill up tmp array
+    int first = start1;  // index of the original first element
+    int left = start1;   // index to iterate through left array
+    int right = start2;  // index to iterate through right array
+     
+    // while there are element in both the left an right array
+    while ( left <= end1 && right <= end2 ) {
+        // if the element in the left is smaller than the one in the right, 
+        // put the element in the left array into tmp
+        if ( a[left] < a[right] ) {
+            tmp[i++] = a[left++];
+        }
+        // otherwise, place the element in the right array into tmp
+        else {
+            tmp[i++] = a[right++];
+        }
+    }
+     
+    // now there should be items remaining in one of the lists...
+    // only one of these two loops will run (since one is already empty)
+    while ( left <= end1 ) {
+        tmp[i++] = a[left++];
+    }
+    while ( right <= end2 ) {
+        tmp[i++] = a[right++];
+    }
+     
+     
+    // now copy the array we just put together in tmp into the original array.
+    int j = 0; 
+    for ( int i = first; i <= end2; i++ ) {
+        a[i] = tmp[j++];
+    }
+     
+     
+}
+ 
+void _mergeSort(int a[], int start, int end) {
+    // check for base case
+    if ( start >= end) {
+        // there is only one element, its sorted, return.
+        // (a list that has one element is sorted, by definition)
+        return;
+    }
+    else {
+        // divide the problem by splitting the array in half
+        int middle = (start + end)/2; // find middle portion
+        _mergeSort(a, start, middle); // sort "left" half by merge sort
+        _mergeSort(a, middle+1, end); // sort "right hald by merge sort
+        merge ( a, start, middle, middle+1, end); // merge the two (sorted) halves together
+    }
+}
+ 
+ 
+void merge_sort(int values[], int n) {
+    // call recursive merge sort
+    _mergeSort(values, 0, n-1);
+}
+
+int Split(int a[], int first, int last) {
+    // use the first value as the pivot.
+    // this is a good chocie if the list is assumed to be random
+    // better choices are possible
+    int splitValue = a[first];
+     
+    int f = first;  // save the index of the first element...
+    first++;
+     
+    // we have two indices, first and last.  first moves to the right, last moves
+    // to the left.  When they meet, we are done...
+    do {
+        // move "first" to the right until the value in first is greater than the 
+        // pivot value or first == last
+        while ( first <= last && a[first] <= splitValue ) {
+            first++;
+        }
+        // move "last" to the left until the value in last is less than the pivot value
+        while ( first <= last && a[last] > splitValue ) {
+            last--;
+        }
+        // if first and last haven't met, it means first and last can be swapped
+        // so they end up on the correct "side" of the pivot
+        if ( first < last ) {
+            swap(a, first++, last--);
+        }
+    } while ( first <= last );
+     
+    int splitPoint = last;
+    swap(a, f, splitPoint); // swap the first with the pivot so a new pivot will be
+                            // selected next time...
+    return splitPoint;
+     
+}
+ 
+void _quickSort(int a[], int first, int last) {
+    // quick sort the list that starts at element "first" and ends at element
+    // "last"
+     
+    // if first is not less than last, then the list is empty, return immediately
+    if ( first < last ) {
+        // split the list according to a pivot value (pivot value is 
+        // decided by the Split function itself
+        int pivot = Split(a, first, last);
+        _quickSort(a, first, pivot-1);  // quick sort the list to the left of the pivot
+        _quickSort(a, pivot+1, last);   // quick sort the list to the right of the pivot
+    }
+}
+ 
+void quick_sort(int values[], int n) {
+    // call the recursive quick sort function
+    _quickSort(values, 0, n-1);
+     
 }

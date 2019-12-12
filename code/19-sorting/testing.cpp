@@ -86,3 +86,21 @@ TEST_CASE("Heap Sort")
     REQUIRE(all_in(values));
     REQUIRE(is_in_order(values));
 }
+
+TEST_CASE("Merge Sort")
+{
+    int values [SIZE];
+    initialize(values);
+    merge_sort(values, SIZE);
+    REQUIRE(all_in(values));
+    REQUIRE(is_in_order(values));
+}
+
+TEST_CASE("Quick Sort")
+{
+    int values [SIZE];
+    initialize(values);
+    quick_sort(values, SIZE);
+    REQUIRE(all_in(values));
+    REQUIRE(is_in_order(values));
+}
