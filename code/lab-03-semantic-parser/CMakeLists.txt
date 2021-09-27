@@ -13,13 +13,13 @@ add_test( Tests testing)
 include_directories(./includes)
 include_directories(../utils)
 
-add_library(deque includes/deque.cpp)
+add_library(parser includes/parser.cpp)
 
 # This defines the name of our executable, and the file that contains main.
-add_executable(deque-ui main.cpp)
-target_link_libraries(deque-ui deque)
+add_executable(parser-ui main.cpp)
+target_link_libraries(parser-ui parser)
 
 # Add another executable for testing
 add_executable(testing test.cpp)
-target_link_libraries(testing deque)
+target_link_libraries(testing parser)
 
