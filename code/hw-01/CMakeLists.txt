@@ -13,13 +13,13 @@ add_test( Tests hw1-test)
 include_directories(./includes)
 include_directories(../utils)
 
-add_library(mirror includes/mirror.cpp)
+add_library(generate includes/generate.cpp)
 
 # This defines the name of our executable, and the file that contains main.
 add_executable(hw1-ui main.cpp)
-target_link_libraries(hw1-ui mirror)
+target_link_libraries(hw1-ui generate)
 
 # Add another executable for testing
 add_executable(hw1-test test.cpp)
-target_link_libraries(hw1-test mirror)
+target_link_libraries(hw1-test generate)
 
