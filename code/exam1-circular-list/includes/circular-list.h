@@ -5,9 +5,8 @@ template <typename T>
 class node
 {
 public:
-    node(node<T> *next, node<T> *prev, T data = 0)
+    node(node<T> *next, node<T> *prev, T data = 0) : next(next), prev(prev), data(data)
     {
-        // Fill this in.
     }
     node<T> *next;
     node<T> *prev;
@@ -23,47 +22,98 @@ template <typename T>
 class CircularList
 {
 public:
-    CircularList()
+    CircularList() : head(nullptr), length(0)
     {
-        // Fill this in
     }
     ~CircularList()
     {
-        // Fill this in
+        clear();
     }
 
     iterator<T> begin() const
     {
-        // Fill this in
+        return iterator<T>(head);
     }
 
     // A circle has no end() :)
 
     bool is_empty() const
     {
-        // Fill this in
+        return head == nullptr;
     }
 
     void clear()
     {
-        // Fill this in
+        while (!is_empty())
+            remove(begin());
     }
 
     // Insert in front of the given iterator.
     void insert(iterator<T> pos, T value)
     {
-        // Fill this in
+        insertImpl(pos, value);
     }
 
     void push(T value)
     {
-        // Fill this in
+        if (is_empty())
+        {
+            head = new node<T>(nullptr, nullptr, value);
+            head->next = head;
+            head->prev = head;
+
+            ++length;
+            return;
+        }
+
+        // Add immediately before head - which is where the "last" position is.
+        auto position = begin();
+        insertImpl(position, value);
     }
 
+private:
+    // Splitting out the implementation allows us to reuse in both insert and push and avoid the copies.
+    void insertImpl(iterator<T> &pos, T &value)
+    {
+        if (!pos.valid())
+        {
+            throw std::out_of_range("Cannot insert given an invalid iterator");
+        }
+
+        auto before = pos.target->prev;
+        auto after = pos.target;
+        auto new_node = new node<T>(after, before, value);
+        after->prev = new_node;
+        before->next = new_node;
+
+        ++length;
+    }
+
+public:
     // Remove the value pointed at by the given iterator.
     void remove(iterator<T> pos)
     {
-        // Fill this in
+        // Special case - one item
+        if (length == 1)
+        {
+            delete head;
+            head = nullptr;
+            --length;
+            return;
+        }
+
+        auto removed = pos.target;
+        removed->next->prev = removed->prev;
+        removed->prev->next = removed->next;
+
+        // Special case - we can't be headless
+        if (removed == head)
+        {
+            head = removed->next;
+        }
+        delete removed;
+
+        --length;
     }
 
     // We choose to omit pop() in favor of remove() with an iterator above - a
@@ -71,7 +121,20 @@ public:
 
     iterator<T> find(const T &value)
     {
-        // Fill this in
+        auto current = head;
+        if (current != nullptr)
+        {
+            do
+            {
+                if (current->data == value)
+                {
+                    return iterator<T>(current);
+                }
+                current = current->next;
+            } while (current != head);
+        }
+
+        return iterator<T>(nullptr);
     }
 
     // We will choose to omit any front/back methods - we encourage the use of
@@ -79,7 +142,7 @@ public:
 
     int size() const
     {
-        // Fill this in
+        return length;
     }
 
 private:
