@@ -63,7 +63,7 @@ def unzipSubmission(submissions, submission, submissionName, report):
   return submissionName
 
 
-def getTestScore(submissions, submissionName, repo, testExecutable, report):
+def getTestScore(submissions, submissionName, repo, testExecutable, testSource, report):
   submissionFullPath = os.path.join(submissions, submissionName)
   tempGradingFolder = os.path.join(repo, 'code', 'temp-grading')
 
@@ -74,11 +74,16 @@ def getTestScore(submissions, submissionName, repo, testExecutable, report):
   # Move to repo root
   shutil.copytree(submissionFullPath, tempGradingFolder)
 
+  # Replace test file, if provided
+  originalTestFile = os.path.join(tempGradingFolder, 'test.cpp')
+  if testSource != None:
+    testFile = os.path.join(repo, 'code', testSource, 'test.cpp')
+    os.remove(originalTestFile)
+    shutil.copyfile(testFile, originalTestFile)
+
   # Make build folder
   buildDir = os.path.join(tempGradingFolder, 'build')
   subprocess.run(['mkdir', buildDir])
-
-  report.write('=== BUILD / TEST ===\n\n')
 
   # Run cmake
   try:
@@ -125,8 +130,10 @@ def getTestScore(submissions, submissionName, repo, testExecutable, report):
     # Segfaults, etc.
     if int(grepexc.returncode) < 0:
       print(f'Test executable failed!')
-      report.write('Tests FAILED with exception\n\n')
+      report.write('Tests FAILED with exception\nFULL OUTPUT:')
       shutil.rmtree(tempGradingFolder)
+      report.write(grepexc.output.decode('utf-8'))
+      report.write('\n\n')
       return 0
 
     testOutput = grepexc.output.decode('utf-8')
@@ -161,9 +168,13 @@ def reportDiff(original, modified, relativePath, report):
     originalFile, modifiedFile = open(
         originalItem, 'r'), open(modifiedItem, 'r')
     relativeFilePath = os.path.join(relativePath, file)
-    diff = list(difflib.unified_diff(originalFile.read().splitlines(), modifiedFile.read().splitlines(),
-                                     fromfile=relativeFilePath,
-                                     tofile=relativeFilePath + ' (reviewed)'))
+    try:
+      diff = list(difflib.unified_diff(originalFile.read().splitlines(), modifiedFile.read().splitlines(),
+                                       fromfile=relativeFilePath,
+                                       tofile=relativeFilePath + ' (reviewed)'))
+    except UnicodeDecodeError:
+      diff = ""
+
     originalFile.close()
     modifiedFile.close()
     if len(diff) > 0:
@@ -190,6 +201,9 @@ def getReviewScore(submissions, submissionName, report):
     subprocess.check_output(
         ['code', tempReviewFolder], stderr=subprocess.STDOUT)
     fudgeFactor = int(input('Enter fudge points: '))
+    comment = None
+    if fudgeFactor != 0:
+      comment = input('Enter comment: ')
 
     # Assuming review has completed by now...
     reportDiff(submissionFullPath, tempReviewFolder, '/', report)
@@ -199,10 +213,10 @@ def getReviewScore(submissions, submissionName, report):
 
   # Clean up
   shutil.rmtree(tempReviewFolder)
-  return fudgeFactor
+  return fudgeFactor, comment
 
 
-def gradeSubmissionCollection(submissions, repo, testExecutable):
+def gradeSubmissionCollection(submissions, repo, testExecutable, testSource):
   reportsLocation = os.path.join(submissions, 'Reports')
   if not os.path.exists(reportsLocation):
     os.mkdir(reportsLocation)
@@ -233,13 +247,25 @@ def gradeSubmissionCollection(submissions, repo, testExecutable):
       report.write(f'Final score: 0')
     else:
       # Test
+      report.write('=== BUILD / TEST ===\n\n')
+      if testSource is not None:
+        report.write('--- YOUR TESTS ---\n\n')
+        getTestScore(submissions, submissionName, repo,
+                     testExecutable, None, report)
+        report.write('--- REFERENCE TESTS ---\n\n')
+
       test_score = getTestScore(
-          submissions, submissionName, repo, testExecutable, report)
+          submissions, submissionName, repo, testExecutable, testSource, report)
       report.write(f'Test score: {test_score}\n\n')
 
       # Code Review
-      review_score = getReviewScore(submissions, submissionName, report)
-      report.write(f'Review bonus points: {review_score}\n\n')
+      review_score, comment = getReviewScore(
+          submissions, submissionName, report)
+      report.write(f'Review bonus points: {review_score}')
+      if review_score != 0:
+        report.write(f'\nComment:\n')
+        report.write(comment)
+      report.write('\n\n')
 
       # Total
       total = test_score + review_score

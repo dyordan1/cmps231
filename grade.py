@@ -15,4 +15,9 @@ if __name__ == '__main__':
   if len(sys.argv) > 3:
     testExecutable = sys.argv[3]
 
-  gradeSubmissionCollection(submissionRoot, repo, testExecutable)
+  # ARG4 - copy tests from example
+  testSource = None
+  if len(sys.argv) > 4:
+    testSource = sys.argv[4]
+
+  gradeSubmissionCollection(submissionRoot, repo, testExecutable, testSource)
